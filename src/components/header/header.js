@@ -20,7 +20,7 @@ const Header = () => {
         
         const fetchData = async function() 
         {
-         await  fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=a6ca8aac3488196c4d79075708e299f9`)
+         await  fetch(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=a6ca8aac3488196c4d79075708e299f9`)
         .then(res => res.json())
         .then(res => { 
             const data = res.wind.speed;
