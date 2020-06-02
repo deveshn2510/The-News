@@ -1,0 +1,8 @@
+.container{
+    background-color: #232323;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
