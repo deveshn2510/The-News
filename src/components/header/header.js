@@ -5,10 +5,12 @@ import Style from './style.module.css';
 const Header = () => {
     const [long, setLong] = useState('');
     const [lat, setLat] = useState('');
+    const [temp, setTemp] = useState('');
 
     useEffect(() => {
-       const getLocations= () =>{
-        navigator.geolocation.getCurrentPosition(function (position) {
+       const getLocations=async function() 
+       {
+        await navigator.geolocation.getCurrentPosition(function (position) {
             console.log("Latitude is :", position.coords.latitude);
             console.log("Longitude is :", position.coords.longitude);
             setLat(position.coords.latitude);
@@ -16,14 +18,20 @@ const Header = () => {
         })
        } 
         
-        getLocations();
-        
-        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=a6ca8aac3488196c4d79075708e299f9`)
+        const fetchData = async function() 
+        {
+         await  fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=a6ca8aac3488196c4d79075708e299f9`)
         .then(res => res.json())
         .then(res => { 
-            const data = JSON.parse(res.main.temp);
+            const data = res.wind.speed;
             console.log(data)
+            setTemp(data)
         })
+        }
+
+        getLocations();
+        fetchData();
+        
 
         
     }, [lat, long])
@@ -34,7 +42,7 @@ const Header = () => {
                     The News
                 </div>
                 <div className={Style.temp}>
-                  {/* //  {data} */}
+                  {temp-273.15}
                 </div>
 
             </div>
