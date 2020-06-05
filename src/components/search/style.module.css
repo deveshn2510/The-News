@@ -1,0 +1,39 @@
+.container{
+    padding: 30px;
+    background-color: #232323;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.input{
+    border-radius: 10px;
+    height: 30px;
+    padding: 5px;
+    margin: 3px;
+}
+
+.select{
+    height: 30px;
+    padding:5px;
+    margin: 3px;
+    border-radius: 10px;
+    size: 1;
+}
+
+.button{
+    background-color: #C60E0D;
+    color: white;
+    border-radius: 10px;
+    height:30px;
+    padding:5px;
+    margin: 3px;
+}
+
+.br{
+    color: white;
+    height: 10px;
+}
+
+.normal{
+    margin-top: 50px;
+}

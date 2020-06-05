@@ -2,7 +2,45 @@
     background-color: #232323;
     color: white;
     font-family: 'Times New Roman', Times, serif;
-    padding: 20px;
+    
+    
+}
+
+.header{
+    font-size: 40px;
+}
+
+.span{
+    padding: 5px;
+}
+
+.tempDetails{
+    position: relative;
+    top: 10px;
+}
+.innerContanier{
     display: flex;
     justify-content: space-between;
+    padding: 20px;
+
+}
+
+@media only screen and (max-width : 400px){
+    .container{
+        background-color: #232323;
+        color: white;
+        font-family: 'Times New Roman', Times, serif;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+    }
+    .innerContanier{
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        flex-direction: column;
+    
+    }
 }
