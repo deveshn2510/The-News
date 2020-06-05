@@ -2,23 +2,64 @@ import React, { useState } from 'react';
 import Style from './style.module.css'
 
 const Search = () => {
-    const [ dropdownValue , setDropdownValue] = useState('en');
-    const [ searchValue , setSearchValue] = useState('');
+    const [dropdownValue, setDropdownValue] = useState('en');
+    const [searchValue, setSearchValue] = useState('');
+    const [data, setData] = useState('');
 
-    
-const buttonPressed=()=>{
-    console.log(searchValue , dropdownValue);
-    if(searchValue==''){
-     //   https://gnews.io/api/v3/top-news?token=API-Token
+
+    const buttonPressed = () => {
+        console.log(searchValue, dropdownValue);
+        if (searchValue == '') {
+            alert("Please enter a search parameter");
+        }
+        fetch(`https://gnews.io/api/v3/search?q=${searchValue}&lang=${dropdownValue}&token=ec280f1563e12b361b37c0e32fc6d7e4`)
+            .then(res => res.json())
+            .then(fetchedData => {
+                setData(fetchedData.articles);
+                console.log(data);
+                setSearchValue('');
+            })
     }
-    // https://gnews.io/api/v3/search?q=mobile&lang=fr&token=ec280f1563e12b361b37c0e32fc6d7e4
-}
+
+    const post = () => {
+        if (data == '') {
+            return (<div>
+            </div>)
+        } else {
+            return (
+                <div className={Style.render}>
+                    {console.log(data)}
+
+                    {data.map(result => {
+                        return (
+                            <div className={Style.innerPost}>
+                                <a key={result.title} href={result.url} >
+                                    <div className={Style.image}>
+                                        <img  src={result.image} alt={result.title}></img>
+                                    </div>
+                                    
+                                </a>
+                                <div><h3>{result.title}</h3></div>
+                                <div className={Style.description}>{result.description}<a key={result.title} href={result.url} >Read More</a></div>
+
+
+                            </div>
+                        )
+                    })
+
+                    }
+                </div>
+            )
+        }
+    }
+
+
 
 
     return (
         <div>
             <div className={Style.container}>
-                <input className={Style.input} placeholder='Search..' type='search' value={searchValue} onChange={e=> setSearchValue(e.target.value)}></input>
+                <input className={Style.input} placeholder='Search..' type='search' value={searchValue} onChange={e => setSearchValue(e.target.value)}></input>
                 <select className={Style.select} value={dropdownValue} onChange={(e) => { setDropdownValue(e.target.value) }} >
                     <option value='af'>Afrikaans</option>
                     <option value='sq'>Albanian</option>
@@ -103,8 +144,8 @@ const buttonPressed=()=>{
                 </select>
                 <button className={Style.button} onClick={buttonPressed}>Search</button>
             </div>
-            <div className={Style.normal}>
-                created
+            <div className={Style.normal} id="data">
+                {post()}
             </div>
         </div>
     )

@@ -29,11 +29,44 @@
     margin: 3px;
 }
 
-.br{
-    color: white;
-    height: 10px;
-}
 
 .normal{
     margin-top: 50px;
+   
+}
+
+.image img{
+    width:100%;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.innerPost{
+    margin: 20px;
+    width: 30%;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px black;
+
+}
+.description{
+    padding: 20px 30px 10px 10px
+}
+
+.render{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+@media only screen and (max-width: 400px){
+    .innerPost{
+        margin: 20px;
+        width: 70%;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px black;
+    
+    }
 }
