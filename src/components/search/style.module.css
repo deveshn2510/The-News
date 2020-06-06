@@ -35,6 +35,21 @@
    
 }
 
+.heading{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    font-weight: bold;
+    color: #C60E0D;
+    align-items: center;
+    margin-top: 50px;
+     font-family: 'Trocchi', serif; 
+     font-size: 45px; 
+     font-weight: normal; 
+     line-height: 48px;
+}
+
 .image img{
     width:100%;
     border-top-right-radius: 5px;
@@ -43,7 +58,7 @@
 
 .innerPost{
     margin: 20px;
-    width: 30%;
+    width: 40%;
     border-radius: 5px;
     box-shadow: 2px 2px 5px black;
 
