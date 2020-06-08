@@ -5,7 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 The Project "The News" is about getting the temperature by getting a client's location and help him to search news of his language.
 
 Features: 
-1. Get Temperature and Temperature Description.
+1. Get Temperature and Weather Conditions.
 2. See Types of News.
 3. Search and Select Languages for News in Native Languages.
 
