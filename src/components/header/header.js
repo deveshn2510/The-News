@@ -4,13 +4,17 @@ import Style from './style.module.css';
 import Search from '../search/search';
 
 const Header = () => {
-    const [long, setLong] = useState(null);
-    const [lat, setLat] = useState(null);
-    const [temp, setTemp] = useState('');
-    const [location, setLocation] = useState('');
-    const [tempDes, setTempDes] = useState('');
+    
+    
+    const [long, setLong] = useState(null); //For Longitude 
+    const [lat, setLat] = useState(null); //For Latitude
+    const [temp, setTemp] = useState('');   // For Temperature
+    const [location, setLocation] = useState('');   // For getting location
+    const [tempDes, setTempDes] = useState('');     // For Tempertaure description
 
-
+    
+    
+    //Getting position and setting the state values
     useEffect(() => {
 
         navigator.geolocation.getCurrentPosition(function (position) {

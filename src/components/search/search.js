@@ -2,18 +2,21 @@ import React, { useState, useEffect } from 'react';
 import Style from './style.module.css'
 
 const Search = () => {
-    const [dropdownValue, setDropdownValue] = useState('en');
-    const [searchValue, setSearchValue] = useState('');
-    const [data, setData] = useState('');
-    const [newsType, setNewsType] = useState('world');
+    const [dropdownValue, setDropdownValue] = useState('en'); // DropDown to select languages
+    const [searchValue, setSearchValue] = useState(''); //Search keyword
+    const [data, setData] = useState('');   //Data fetched from Api
+    const [newsType, setNewsType] = useState('world'); //News type
 
+    //default page
     useEffect(() => {
+        
         fetch(`https://gnews.io/api/v3/topics/${newsType}?token=ec280f1563e12b361b37c0e32fc6d7e4`).then(res => res.json()).then(fetchedData => {
             setData(fetchedData.articles);
             post();
         })
     }, [newsType])
 
+    //when search button is pressed
     const buttonPressed = () => {
         console.log(searchValue, dropdownValue);
         if (searchValue == '') {
@@ -30,6 +33,7 @@ const Search = () => {
             })
     }
 
+    //Creating post or card
     const post = () => {
         if (data == '') {
             return (<div>
@@ -71,6 +75,7 @@ const Search = () => {
         <div>
             <div className={Style.container}>
                 <input className={Style.input} placeholder='Search News..' type='search' value={searchValue} onChange={e => setSearchValue(e.target.value)}></input>
+                {/* dropdown for Languages */}
                 <select className={Style.select} value={dropdownValue} onChange={(e) => { setDropdownValue(e.target.value) }} >
                     <option value='af'>Afrikaans</option>
                     <option value='sq'>Albanian</option>
@@ -160,6 +165,7 @@ const Search = () => {
                     {(newsType).toUpperCase()}
                 </div>
                 <div>
+                    {/* dropdown for News Type */}
                     <select className={Style.select} value={newsType} onChange={(e) => { setNewsType(e.target.value) }} >
                         <option value='world'>World</option>
                         <option value='nation'>Nation</option>
